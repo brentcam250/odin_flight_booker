@@ -4,6 +4,20 @@
   <strong>Name:</strong>
   <%= @airport.name %>
 </p>
+<p>
+  <strong>Next Departing Flight</strong>
+  <%= @airport.departing_flights.first.to_airport.name %>
+  <%= @airport.departing_flights.first.departure_time %>
+
+</p>
+<p>
+  <strong>Next Arriving Flight</strong>
+  <%= @airport.arriving_flights.first.from_airport.name %>
+  <%= @airport.arriving_flights.first.departure_time %>
+
+</p>
+
+
 
 <%= link_to 'Edit', edit_airport_path(@airport) %> |
 <%= link_to 'Back', airports_path %>
