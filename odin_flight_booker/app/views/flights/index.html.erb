@@ -13,6 +13,7 @@
   </thead>
 
   <tbody>
+  <span>All Flights</span>
     <% @flights.each do |flight| %>
       <tr>
         <td><b><%= flight.from_airport.name %></b>  to   <b><%= flight.to_airport.name %></b>  departing at: <%= flight.departure_time %> </td>

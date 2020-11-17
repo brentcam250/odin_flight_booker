@@ -11,9 +11,10 @@
         <%= form_with( method: "get" ) do %>
             <%= label_tag(:query, "Search for flights:") %>
             <td><%= select_tag(:from_airport_id, options_for_select(@airport_options)) %> </td>
-            <td><%= select_tag(:from_airport_id, options_for_select(@airport_options)) %> </td>
-            <td></td>
-            <td></td>
+            <td><%= select_tag(:to_airport_id, options_for_select(@airport_options)) %> </td>
+            <td><%= select_tag(:departure_date, options_from_collection_for_select(UgradRsvp.get_event_dates, 'event_date', :event_date_formatted) %></td>
+            <td><%= select_tag(:num_passengers, options_for_select([1,2,3,4]) ) %></td>
+
             <%= submit_tag("Search") %>
         <% end %>
     </tr>
