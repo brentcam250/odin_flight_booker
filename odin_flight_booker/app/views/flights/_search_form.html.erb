@@ -1,0 +1,21 @@
+<h3>Search</h3>
+
+<table>
+    <tr>
+        <th>From: </th>
+        <th>To: </th>
+        <th>Date: </th>
+        <th>Number of Passengers: </th>
+    </tr>
+    <tr>
+        <%= form_with( method: "get" ) do %>
+            <%= label_tag(:query, "Search for flights:") %>
+            <td><%= select_tag(:from_airport_id, options_for_select(@airport_options)) %> </td>
+            <td><%= select_tag(:from_airport_id, options_for_select(@airport_options)) %> </td>
+            <td></td>
+            <td></td>
+            <%= submit_tag("Search") %>
+        <% end %>
+    </tr>
+
+</table>
