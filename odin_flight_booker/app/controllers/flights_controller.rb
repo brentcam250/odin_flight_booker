@@ -6,11 +6,13 @@ class FlightsController < ApplicationController
   def index
     @flights = Flight.all
     @airport_options = Airport.all.map{ |a| [a.name, a.id] }
+    @flight_date_options = Flight.get_flight_dates
   end
 
   # GET /flights/1
   # GET /flights/1.json
   def show
+    # @flight = Flight.find(:id)
   end
 
   # GET /flights/new

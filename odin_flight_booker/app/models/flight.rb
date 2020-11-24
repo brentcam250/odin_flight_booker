@@ -6,7 +6,15 @@ class Flight < ApplicationRecord
         departure_date = departure_time.strftime("%m/%d/%y")
     end
 
+    def flight_time_formatted
+        departure_only_time = departure_time.strftime("%h/%m")
+    end
+
     def self.get_flight_dates
-        Flight.find_by_sql("select distinct departure_time from flights where departure_time is not null order by departure_time desc")
+        #MyTable.pluck("distinct date(updated_at)") 
+        #Flight.find_by_sql("select distinct departure_time from flights where departure_time is not null order by departure_time desc")
+        
+        Flight.pluck("distinct date(departure_time)")
+
     end
 end
