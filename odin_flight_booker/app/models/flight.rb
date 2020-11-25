@@ -15,6 +15,7 @@ class Flight < ApplicationRecord
         #Flight.find_by_sql("select distinct departure_time from flights where departure_time is not null order by departure_time desc")
         
         Flight.pluck("distinct date(departure_time)")
+        # Flight.find_by_sql("select distinct date(departure_time) from flights order by departure_time desc")
 
     end
 end

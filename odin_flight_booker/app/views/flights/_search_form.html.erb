@@ -8,15 +8,15 @@
         <th>Number of Passengers: </th>
     </tr>
     <tr>
-        <%= form_with( method: "get" ) do %>
-            <%= label_tag(:query, "Search for flights:") %>
-            <td><%= select_tag(:from_airport_id, options_for_select(@airport_options)) %> </td>
-            <td><%= select_tag(:to_airport_id, options_for_select(@airport_options)) %> </td>
-            <td><%= select_tag(:departure_date, options_for_select(@flight_date_options)) %></td>
-            <td><%= select_tag(:num_passengers, options_for_select([1,2,3,4]) ) %></td>
 
-            <%= submit_tag("Search") %>
+        <%= simple_form_for(flight, url: flights_path, method: :get, local: true) do |f| %>
+            <%= f.input :from_airport_id, collection: @airport_options %>
+            <%= f.input :to_airport_id, collection: @airport_options %>
+            <%= f.input :departure_time, collection: @flight_date_options %>
+            
+            <%= f.button :submit, 'Search' %>
         <% end %>
+
     </tr>
 
 </table>

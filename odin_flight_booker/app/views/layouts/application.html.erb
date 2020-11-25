@@ -10,7 +10,12 @@
   </head>
 
   <body>
-  <div class = 'navbar'><a href = 'https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-advanced-forms'>Odin Flight Booker!</a></div>
+  <% if flash[:alert] %>
+    <p><%= alert %></p>
+  <% end %>
+  <div class = 'navbar'>
+    <span><a href = 'https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-advanced-forms'>Odin Flight Booker!</a></span>
+  </div>
     <%= yield %>
   </body>
 </html>
