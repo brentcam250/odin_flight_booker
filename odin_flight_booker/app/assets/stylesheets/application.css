@@ -21,3 +21,8 @@
   font-weight: bold;
   font-size: x-large;
 }
+
+.search {
+  background-color: aqua;
+  width: 50%
+}

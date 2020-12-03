@@ -10,6 +10,7 @@ class FlightsController < ApplicationController
     @flight_date_options = Flight.get_flight_dates
 
 
+
     @flight_search_results = Flight.where(from_airport_id: params[:from_airport_id]) 
     if params.has_key?(:flight)
       flash.now[:alert] = "AIRPORT!!!"
@@ -87,5 +88,6 @@ class FlightsController < ApplicationController
       # params.fetch(:flight, {})
       params.require(:flight).permit(:from_airport_id, :to_airport_id, :departure_date, :num_passengers)
     end
+
 
 end

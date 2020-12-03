@@ -1,22 +1,22 @@
 <h3>Search</h3>
 
-<table>
-    <tr>
-        <th>From: </th>
-        <th>To: </th>
-        <th>Date: </th>
-        <th>Number of Passengers: </th>
-    </tr>
-    <tr>
+<%= simple_form_for(flight, url: flights_path, method: :get, local: true) do |f| %>
 
-        <%= simple_form_for(flight, url: flights_path, method: :get, local: true) do |f| %>
-            <%= f.input :from_airport_id, collection: @airport_options %>
-            <%= f.input :to_airport_id, collection: @airport_options %>
-            <%= f.input :departure_time, collection: @flight_date_options %>
-            
-            <%= f.button :submit, 'Search' %>
-        <% end %>
+    <table class= 'search'>
+        <tr>
+            <th>From: </th>
+            <th>To: </th>
+            <th>Date: </th>
+            <th>Number of Passengers: </th>
+        </tr>
+        <tr>
+            <td><%= f.input :from_airport_id, collection: @airport_options %></td>
+            <td><%= f.input :to_airport_id, collection: @airport_options %></td>
+            <td><%= f.input :departure_time, collection: @flight_date_options %></td>  
+        </tr>
 
-    </tr>
 
-</table>
+    </table>
+    
+    <%= f.button :submit, 'Search' %>
+<% end %>

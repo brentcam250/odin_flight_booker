@@ -1,13 +1,14 @@
   <span>Search Results:</span>
   <p>
-  Travelling from:
-    <%= params %>
-    from id
-    <%  @flight_search_results.each do |flight| %>
-      <b><%= flight.from_airport.name %></b>  to   <b><%= flight.to_airport.name %></b>  departing at: <%= flight.departure_time %>
+
+    <%= form_with model: @booking  do |form| %>
+        <%  @flight_search_results.each do |flight| %>
+          <%= form.radio_button('booking', 'flight') %>
+          <b><%= flight.from_airport.name %></b>  to   <b><%= flight.to_airport.name %></b>  departing at: <%= flight.departure_time %>
+        <% end %>
+        <%= form.submit "Book!" %>
     <% end %>
     <br />
-    flight nil??
-    <%= @flight.nil? %>
+
 
   </p>

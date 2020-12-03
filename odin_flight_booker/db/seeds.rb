@@ -6,8 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# danger!! running seeds will delete and repopulate
+Airport.delete_all
+Flight.delete_all
 
-airports = Airport.create([{ id: 1, name: "YYC" }, { id: 2, name: "YVR" }, { id: 3, name: "YYZ" }, { id: 4, name: "YEG" }])
+
+airports = Airport.create([{ id: 1, name: "YYC" }, { id: 2, name: "YVR" }, { id: 3, name: "YYZ" }, { id: 4, name: "YEG" }, { id: 5, name: "YYJ" }])
+
+
 
 flights = Flight.create([{ id: 1, departure_time: "2020-12-01 12:30:00", from_airport_id: 1, to_airport_id: 2}, 
 { id: 2, departure_time: "2020-12-01 13:30:00", from_airport_id: 2, to_airport_id: 3},
