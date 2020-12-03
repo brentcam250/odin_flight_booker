@@ -20,4 +20,9 @@ flights = Flight.create([{ id: 1, departure_time: "2020-12-01 12:30:00", from_ai
 { id: 3, departure_time: "2020-12-01 14:30:00", from_airport_id: 3, to_airport_id: 1},
 { id: 4, departure_time: "2020-12-01 15:30:00", from_airport_id: 3, to_airport_id: 2},
 { id: 5, departure_time: "2020-12-01 16:30:00", from_airport_id: 2, to_airport_id: 1},
+
+{ id: 7, departure_time: "2020-12-25 17:30:00", from_airport_id: 2, to_airport_id: 1},
+{ id: 8, departure_time: "2020-12-25 18:30:00", from_airport_id: 2, to_airport_id: 1},
+{ id: 9, departure_time: "2020-12-25 19:30:00", from_airport_id: 2, to_airport_id: 1},
+
 { id: 6, departure_time: "2020-12-01 17:30:00", from_airport_id: 1, to_airport_id: 3}])

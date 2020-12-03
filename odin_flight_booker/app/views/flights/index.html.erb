@@ -17,6 +17,7 @@
 
 
   <span>Flights</span>
+  
     <% @flights.each do |flight| %>
       <tr>
         <td><%= link_to 'Book', new_booking_path(flight) %></td>
@@ -26,7 +27,13 @@
         <td><%= link_to 'Destroy', flight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
       </tr>
+
     <% end %>
+
+      <%= simple_form_for @booking do |f| %>
+          <%= f.input :flight, as: :radio_buttons, collection: @flights, label_method: :from_airport, value_method: :id %>
+      <% end %>
+
   </tbody>
 </table>
 

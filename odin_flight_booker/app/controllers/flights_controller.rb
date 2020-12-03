@@ -13,7 +13,7 @@ class FlightsController < ApplicationController
 
     @flight_search_results = Flight.where(from_airport_id: params[:from_airport_id]) 
 
-
+    @booking = Booking.new
     @from_airport_id = params[:from_airport_id]
   end
 
