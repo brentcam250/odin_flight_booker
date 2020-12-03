@@ -2,7 +2,11 @@
 
 <%= render 'form', booking: @booking %>
 
-<%= params %>
-<%= @flight.from_airport.name %>
+<strong>Booking:</strong>
+
+from: <%= @flight.from_airport.name %>
+to: <%= @flight.to_airport.name %>
+departing at: <%= @flight.departure_time %>
+number of passengers: <%= num_passengers %>
 
 <%= link_to 'Back', bookings_path %>

@@ -12,12 +12,7 @@ class FlightsController < ApplicationController
 
 
     @flight_search_results = Flight.where(from_airport_id: params[:from_airport_id]) 
-    if params.has_key?(:flight)
-      flash.now[:alert] = "AIRPORT!!!"
-    
-    else
-      flash.now[:alert] = "NOOOOOOOOO!!"
-    end
+
 
     @from_airport_id = params[:from_airport_id]
   end

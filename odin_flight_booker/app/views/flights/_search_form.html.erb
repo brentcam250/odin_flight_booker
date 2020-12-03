@@ -3,16 +3,13 @@
 <%= simple_form_for(flight, url: flights_path, method: :get, local: true) do |f| %>
 
     <table class= 'search'>
+
         <tr>
-            <th>From: </th>
-            <th>To: </th>
-            <th>Date: </th>
-            <th>Number of Passengers: </th>
-        </tr>
-        <tr>
-            <td><%= f.input :from_airport_id, collection: @airport_options %></td>
-            <td><%= f.input :to_airport_id, collection: @airport_options %></td>
-            <td><%= f.input :departure_time, collection: @flight_date_options %></td>  
+            <th><%= f.input :from_airport_id, collection: @airport_options %></th>
+            <th><%= f.input :to_airport_id, collection: @airport_options %></th>
+            <th><%= f.input :departure_time, collection: @flight_date_options %></th>  
+            <th><%= f.input :passengers, collection: 1..4 %></th>  
+  
         </tr>
 
 

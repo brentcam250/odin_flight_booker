@@ -14,9 +14,12 @@ class BookingsController < ApplicationController
 
   # GET /bookings/new
   def new
-    @booking = Booking.new
+    # @booking = Booking.new
     flight_id = params[:format]
+    # num_passengers = params[:passengers]
     @flight = Flight.find(flight_id)
+    @booking = @flight.bookings.build
+    
   end
 
   # GET /bookings/1/edit
