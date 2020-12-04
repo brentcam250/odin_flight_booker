@@ -16,7 +16,6 @@ class BookingsController < ApplicationController
   def new
     # @booking = Booking.new
     flight_id = params[:format]
-    # num_passengers = params[:passengers]
     @flight = Flight.find(flight_id)
     @booking = @flight.bookings.build
     

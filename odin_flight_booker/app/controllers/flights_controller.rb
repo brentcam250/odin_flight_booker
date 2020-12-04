@@ -5,14 +5,18 @@ class FlightsController < ApplicationController
   # GET /flights.json
   def index
     # @flights = Flight.all
-    @flights = (params[:flight].nil? ? Flight.all : Flight.where(flight_params)).includes(:from_airport, :to_airport).order(:departure_time).limit(10)
+      @flights = (params[:flight].nil? ? Flight.all : Flight.where(flight_params)).includes(:from_airport, :to_airport).order(:departure_time).limit(10)
+    
     @airport_options = Airport.all.map{ |a| [a.name, a.id] }
     @flight_date_options = Flight.get_flight_dates
+    # if params[:flight]
+    #   params[:flight].delete_if { |_k, v| v.empty? }
+    #   @flights = (params[:flight].nil? ? Flight.all : Flight.where(flight_params)).includes(:from_airport, :to_airport).order(:departure_time).limit(10)
+      
+    # end
 
-
-
-    @flight_search_results = Flight.where(from_airport_id: params[:from_airport_id]) 
-
+    # @flight_search_results = Flight.where(from_airport_id: params[:from_airport_id], to_airport_id: params[:flight][:to_airport_id]) 
+    # @num_passengers = params[:flight][:num_passengers]
     @booking = Booking.new
     @from_airport_id = params[:from_airport_id]
   end

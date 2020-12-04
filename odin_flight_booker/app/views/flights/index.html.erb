@@ -20,7 +20,7 @@
   
     <% @flights.each do |flight| %>
       <tr>
-        <td><%= link_to 'Book', new_booking_path(flight) %></td>
+        <td><%= link_to 'Book', new_booking_path(flight, @num_passengers) %></td>
         <td><b><%= flight.from_airport.name %></b>  to   <b><%= flight.to_airport.name %></b>  departing at: <%= flight.departure_time %> </td>
         <td><%= link_to 'Show', flight %></td>
         <td><%= link_to 'Edit', edit_flight_path(flight) %></td>
@@ -30,9 +30,6 @@
 
     <% end %>
 
-      <%= simple_form_for @booking do |f| %>
-          <%= f.input :flight, as: :radio_buttons, collection: @flights, label_method: :from_airport, value_method: :id %>
-      <% end %>
 
   </tbody>
 </table>
