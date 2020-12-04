@@ -16,7 +16,7 @@ class FlightsController < ApplicationController
     # end
 
     # @flight_search_results = Flight.where(from_airport_id: params[:from_airport_id], to_airport_id: params[:flight][:to_airport_id]) 
-    # @num_passengers = params[:flight][:num_passengers]
+    @num_passengers = params[:num_passengers]
     @booking = Booking.new
     @from_airport_id = params[:from_airport_id]
   end
