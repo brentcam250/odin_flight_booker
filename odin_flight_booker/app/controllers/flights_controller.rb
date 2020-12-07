@@ -4,7 +4,7 @@ class FlightsController < ApplicationController
   # GET /flights
   # GET /flights.json
   def index
-    @selected_date = (params[:flight][:flight_date_formatted].nil? ? (Date.today) : (Date.parse(params[:flight][:flight_date_formatted])))
+    @selected_date = (params[:flight].nil? ? (Date.today) : (Date.parse(params[:flight][:flight_date_formatted])))
       # @selected_date = Date.parse(params[:departure_date])
     
     # @flights = (params[:flight].nil? ? Flight.all : Flight.where(flight_params)).includes(:from_airport, :to_airport, :departure_time => @selected_date.beginning_of_day..@selected_date.end_of_day).order(:departure_time).limit(10)
