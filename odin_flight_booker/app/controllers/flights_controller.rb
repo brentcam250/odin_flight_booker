@@ -4,18 +4,30 @@ class FlightsController < ApplicationController
   # GET /flights
   # GET /flights.json
   def index
-    # @flights = Flight.all
-      @flights = (params[:flight].nil? ? Flight.all : Flight.where(flight_params)).includes(:from_airport, :to_airport).order(:departure_time).limit(10)
+    @selected_date = (params[:flight][:flight_date_formatted].nil? ? (Date.today) : (Date.parse(params[:flight][:flight_date_formatted])))
+      # @selected_date = Date.parse(params[:departure_date])
     
+    # @flights = (params[:flight].nil? ? Flight.all : Flight.where(flight_params)).includes(:from_airport, :to_airport, :departure_time => @selected_date.beginning_of_day..@selected_date.end_of_day).order(:departure_time).limit(10)
+    
+    # @flights = (params[:flight].nil? ? Flight.all : Flight.where(flight_params)).includes(:from_airport, :to_airport).order(:departure_time).limit(10)
+    # Flight.where(:departure_time => s.beginning_of_day..s.end_of_day)
+
+    # @flights = (params[:flight].nil? ? Flight.all : Flight.where('departure_time >= :start_date AND departure_time <= :end_date AND from_airport_id = ? AND to_airport_id = ?', {start_date: @selected_date.beginning_of_day, end_date: @selected_date.end_of_day, :from_airport_id, :to_airport_id}))
+    
+    #long query finally works for all the params
+    @flights = (params[:flight].nil? ? Flight.all : Flight.where(departure_time: 
+    (@selected_date.beginning_of_day..@selected_date.end_of_day), from_airport: params[:flight][:from_airport_id],
+    to_airport: params[:flight][:to_airport_id]))
+
+    # works for just the date, but not searching for airports as well.
+    # @flights = (params[:flight].nil? ? Flight.all : Flight.where(:departure_time => @selected_date.beginning_of_day..@selected_date.end_of_day).order(:departure_time).limit(10))
+
     @airport_options = Airport.all.map{ |a| [a.name, a.id] }
     @flight_date_options = Flight.get_flight_dates
-    # if params[:flight]
-    #   params[:flight].delete_if { |_k, v| v.empty? }
-    #   @flights = (params[:flight].nil? ? Flight.all : Flight.where(flight_params)).includes(:from_airport, :to_airport).order(:departure_time).limit(10)
-      
-    # end
 
-    # @flight_search_results = Flight.where(from_airport_id: params[:from_airport_id], to_airport_id: params[:flight][:to_airport_id]) 
+    @flight = Flight.first
+
+
     @num_passengers = params[:num_passengers]
     @booking = Booking.new
     @from_airport_id = params[:from_airport_id]
@@ -85,7 +97,7 @@ class FlightsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def flight_params
       # params.fetch(:flight, {})
-      params.require(:flight).permit(:from_airport_id, :to_airport_id, :departure_date, :num_passengers)
+      params.require(:flight).permit(:from_airport_id, :to_airport_id, :departure_date, :num_passengers, :departure_time, :flight_date_formatted)
     end
 
 

@@ -17,6 +17,7 @@ class BookingsController < ApplicationController
     # @booking = Booking.new
     flight_id = params[:format]
     @flight = Flight.find(flight_id)
+    # @flight = flight_params
     @booking = @flight.bookings.build
     
   end
@@ -74,5 +75,10 @@ class BookingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def booking_params
       params.fetch(:booking, {})
+    end
+
+    def flight_params
+      # params.fetch(:flight, {})
+      params.require(:flight).permit(:from_airport_id, :to_airport_id, :departure_date, :num_passengers)
     end
 end

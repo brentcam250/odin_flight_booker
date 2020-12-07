@@ -1,11 +1,14 @@
 <h3>Search</h3>
 
-<%= simple_form_for(flight, url: flights_path, method: :get, local: true) do |f| %>
+SELECTED DATE:
+<%= @selected_date %>
+
+<%= simple_form_for(@flight, url: flights_path, method: :get, local: true) do |f| %>
     <table class= 'search'>
         <tr>
             <th><%= f.input :from_airport_id, collection: @airport_options %></th>
             <th><%= f.input :to_airport_id, collection: @airport_options %></th>
-            <th><%= f.input :departure_time, collection: @flight_date_options  %></th>  
+            <th><%= f.input :flight_date_formatted, collection: @flight_date_options  %></th>  
             <th><%= f.input :passengers, collection: 1..4  %></th>  
   
         </tr>

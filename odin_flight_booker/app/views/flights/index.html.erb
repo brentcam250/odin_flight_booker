@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Flights</h1>
-
-
-<%= render 'search_form' , flight: @flights[0] %>
+params:
+<%= params %>
+<%= render 'search_form'  %>
 
 <table>
   <thead>
@@ -14,14 +14,15 @@
 
   <tbody>
 
-<%= params %>
+<%= params[:flight] %>
 
+<br />
   <span>Flights</span>
   
     <% @flights.each do |flight| %>
       <tr>
-        <td><%= link_to 'Book', new_booking_path(flight, data: :num_passengers) %></td>
-        <td><b><%= flight.from_airport.name %></b>  to   <b><%= flight.to_airport.name %></b>  departing at: <%= flight.departure_time %> </td>
+        <td><%= link_to 'Book', new_booking_path(flight) %></td>
+        <td><b><%= flight.from_airport.name %></b>  to   <b><%= flight.to_airport.name %></b>  departing on: <%= flight.flight_date_formatted %> at: <b><%= flight.flight_time_formatted %></b></td>
         <td><%= link_to 'Show', flight %></td>
         <td><%= link_to 'Edit', edit_flight_path(flight) %></td>
         <td><%= link_to 'Destroy', flight, method: :delete, data: { confirm: 'Are you sure?' } %></td>

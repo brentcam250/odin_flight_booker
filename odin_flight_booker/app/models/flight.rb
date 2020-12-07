@@ -5,11 +5,11 @@ class Flight < ApplicationRecord
     has_many :passengers, through: :bookings
 
     def flight_date_formatted
-        departure_date = departure_time.strftime("%m/%d/%y")
+        departure_date = departure_time.strftime("%d %B %y")
     end
 
     def flight_time_formatted
-        departure_only_time = departure_time.strftime("%h/%m")
+        departure_only_time = departure_time.strftime("%H:%M")
     end
 
     def self.get_flight_dates
