@@ -5,11 +5,11 @@
 <strong>Booking:</strong>
 
 <%= params %>
-
-    from: <%= @flight.from_airport.name %>
-    to: <%= @flight.to_airport.name %>
+<br /> 
+    from: <b><%= @flight.from_airport.name %></b>
+    to: <b><%= @flight.to_airport.name %></b>
     departing at: <%= @flight.departure_time %>
-    number of passengers: 
+    number of passengers: <%= params[:num_passengers].empty? ? 1 : params[:num_passengers] %>
 
 
 <%= link_to 'Back', bookings_path %>
