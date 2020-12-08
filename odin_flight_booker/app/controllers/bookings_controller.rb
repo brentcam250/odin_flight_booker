@@ -18,6 +18,8 @@ class BookingsController < ApplicationController
     flight_id = params[:flight]
     @flight = Flight.find(flight_id)
     # # @flight = flight_params
+    #if no passenger number passed in, make default 1 passenger
+    @num_passengers = params[:num_passengers].empty? ? 1 : params[:num_passengers]
     @booking = @flight.bookings.build
     # @booking = Booking.new
 
