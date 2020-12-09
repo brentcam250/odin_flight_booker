@@ -28,7 +28,7 @@ class FlightsController < ApplicationController
     @flight = (@flights[0].nil? ? Flight.first : @flights[0])
 
 
-    @num_passengers = params[:flight][:passengers].empty? ? 1 : params[:flight][:passengers]
+    @num_passengers = (params[:flight].nil? || params[:flight][:passengers].empty?) ? 1 : params[:flight][:passengers]
     @booking = Booking.new
     @from_airport_id = params[:from_airport_id]
   end
