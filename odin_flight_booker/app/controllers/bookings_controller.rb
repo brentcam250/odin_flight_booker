@@ -14,14 +14,12 @@ class BookingsController < ApplicationController
 
   # GET /bookings/new
   def new
-    # @booking = Booking.new
     flight_id = params[:flight]
     @flight = Flight.find(flight_id)
-    # # @flight = flight_params
+
     #if no passenger number passed in, make default 1 passenger
     @num_passengers = params[:num_passengers].empty? ? 1 : params[:num_passengers]
     @booking = @flight.bookings.build
-    # @booking = Booking.new
 
   end
 
@@ -32,6 +30,10 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
+    # flight_id = params[:flight]
+    # @flight = Flight.find(flight_id)
+    # @booking = @flight.bookings.build
+
     @booking = Booking.new(booking_params)
 
     respond_to do |format|
@@ -77,7 +79,8 @@ class BookingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def booking_params
-      params.fetch(:booking, {})
+      params.require(:booking).permit(:flight, :num_passengers)
+
     end
 
     def flight_params

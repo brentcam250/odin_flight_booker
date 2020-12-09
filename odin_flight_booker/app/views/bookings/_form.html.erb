@@ -1,9 +1,23 @@
+helper params:
 
+<%= params %>
 <%= simple_form_for(@booking) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<%= @booking %>
+      <br />
+<%= @booking.passengers %>
+      <br />
+
+flight id:
+<%= @booking.flight.id %>
+
 
   <div class="form-inputs">
+    <% @num_passengers.to_i.times do %>
+      hello passenger
+      <br />
+    <% end %>
   </div>
 
   <div class="form-actions">
