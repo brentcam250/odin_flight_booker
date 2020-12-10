@@ -5,14 +5,6 @@ class FlightsController < ApplicationController
   # GET /flights.json
   def index
     @selected_date = ((params[:flight].nil? || params[:flight][:flight_date_formatted].empty?) ? (Date.today) : (Date.parse(params[:flight][:flight_date_formatted])))
-      # @selected_date = Date.parse(params[:departure_date])
-    
-    # @flights = (params[:flight].nil? ? Flight.all : Flight.where(flight_params)).includes(:from_airport, :to_airport, :departure_time => @selected_date.beginning_of_day..@selected_date.end_of_day).order(:departure_time).limit(10)
-    
-    # @flights = (params[:flight].nil? ? Flight.all : Flight.where(flight_params)).includes(:from_airport, :to_airport).order(:departure_time).limit(10)
-    # Flight.where(:departure_time => s.beginning_of_day..s.end_of_day)
-
-    # @flights = (params[:flight].nil? ? Flight.all : Flight.where('departure_time >= :start_date AND departure_time <= :end_date AND from_airport_id = ? AND to_airport_id = ?', {start_date: @selected_date.beginning_of_day, end_date: @selected_date.end_of_day, :from_airport_id, :to_airport_id}))
     
     #long query finally works for all the params
     @flights = (params[:flight].nil? ? Flight.all : Flight.where(departure_time: 
@@ -30,9 +22,9 @@ class FlightsController < ApplicationController
 
     @num_passengers = (params[:flight].nil? || params[:flight][:passengers].empty?) ? 1 : params[:flight][:passengers]
     # @booking = Booking.new({:flight_id => @flight.id, :num_passengers => @num_passengers})
-    @booking = Booking.new
-    @booking.flight_id = @flight.id
-    @booking.num_passengers = @num_passengers
+    # @booking = Booking.new
+    # @booking.flight_id = @flight.id
+    # @booking.num_passengers = @num_passengers
     # @booking = @flight.bookings.build
     @from_airport_id = params[:from_airport_id]
   end
