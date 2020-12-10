@@ -14,12 +14,12 @@ class BookingsController < ApplicationController
 
   # GET /bookings/new
   def new
-    flight_id = booking_params[:flight]
-    @flight = Flight.find(flight_id)
+    flight = booking_params[:flight]
+    @flight = Flight.find(flight)
 
     #if no passenger number passed in, make default 1 passenger
     @num_passengers = params[:num_passengers].empty? ? 1 : params[:num_passengers]
-    @booking = @flight.bookings.build
+    @booking = @flight.bookings.build(booking_params)
 
     @booking_params = booking_params
 
@@ -82,12 +82,13 @@ class BookingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def booking_params
       # params.require(:booking).permit(:flight_id, passengers_data: [:id, :name, :email])
-      params.permit(:flight, :num_passengers)
+      params.require(:booking).permit(:flight, :num_passengers)
+
 
     end
 
-    def flight_params
-      # params.fetch(:flight, {})
-      params.require(:flight).permit(:from_airport_id, :to_airport_id, :departure_date, :num_passengers)
-    end
+    # def flight_params
+    #   # params.fetch(:flight, {})
+    #   params.require(:flight).permit(:from_airport_id, :to_airport_id, :departure_date, :num_passengers)
+    # end
 end

@@ -13,11 +13,13 @@
 
   <tbody>
 
-<%= params[:flight] %>
 
-num passengers:
+booking:
 
-<%= @num_passengers %>
+<%= @booking %>
+<%= @booking.flight_id %>
+<%= @booking.num_passengers %>
+
 
 <br />
   <span>Flights</span>
@@ -27,7 +29,7 @@ num passengers:
         <td><%= button_to 'Book', 
         new_booking_path,
         method: :get,
-        params: {flight_id: flight.id, num_passengers: @num_passengers} %></td>
+        params: {booking: @booking, flight: flight.id, num_passengers: @num_passengers} %></td>
         <td><b><%= flight.from_airport.name %></b>  to   <b><%= flight.to_airport.name %></b>  departing on: <%= flight.flight_date_formatted %> at: <b><%= flight.flight_time_formatted %></b></td>
         <td><%= link_to 'Show', flight %></td>
         <td><%= link_to 'Edit', edit_flight_path(flight) %></td>
