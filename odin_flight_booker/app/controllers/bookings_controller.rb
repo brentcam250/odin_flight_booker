@@ -23,9 +23,12 @@ class BookingsController < ApplicationController
 
     # @booking_params = booking_params
 
+    #confusing about passing the id, when it actually expects the object
     @booking = Booking.new
+
     @flight = Flight.find(booking_params[:flight])
 
+    @num_passengers = booking_params[:num_passengers]
   end
 
   # GET /bookings/1/edit

@@ -8,7 +8,9 @@ helper params:
 
   <div class="form-inputs">
   <%= f.input :flight, value: params[:flight] %>
-  <%= f.input :passengers, value: params[:num_passengers] %>
+  <% @num_passengers.to_i.times do %>
+    <%= f.input :passengers, value: params[:num_passengers] %>
+  <% end %>
 
     </div>
 
