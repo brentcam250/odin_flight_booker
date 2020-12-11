@@ -3,9 +3,14 @@
 <%= render 'form', booking: @booking %>
 
 <strong>Booking:</strong>
-params:
-<%= @booking_params %>
-/params
+Your Flight: 
+<b><%= @flight.from_airport.name %></b>
+to:
+<b><%= @flight.to_airport.name %></b>
+departing at:
+<b><%= @flight.departure_time %></b>
+
+
 <br /> 
 
 <br />

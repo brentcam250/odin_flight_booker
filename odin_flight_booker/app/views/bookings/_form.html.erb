@@ -7,9 +7,9 @@ helper params:
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-  <%= f.input :flight, value: params[:flight] %>
+  <%= f.input :flight, value: @flight %>
   <% @num_passengers.to_i.times do %>
-    <%= f.input :passengers, value: params[:num_passengers] %>
+    <%= f.input :passengers, label: "name" %>
   <% end %>
 
     </div>
