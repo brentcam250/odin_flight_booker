@@ -46,7 +46,11 @@ class BookingsController < ApplicationController
     # @flight = Flight.find(flight_id)
     # @booking = @flight.bookings.build
 
-    @booking = Booking.new(booking_params)
+    # @booking = Booking.new(booking_params)
+
+    @flight = Flight.find(booking_params[:flight])
+    @booking = Booking.new({:flight => @flight})
+
 
     respond_to do |format|
       if @booking.save
