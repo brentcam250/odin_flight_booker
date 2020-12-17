@@ -12,6 +12,8 @@
   <tbody>
     <% @bookings.each do |booking| %>
       <tr>
+        <td>Flight id: <%= booking.flight_id %></td>
+        <td>Number of Passengers: <%= booking.num_passengers.nil? ? 0 : booking.num_passengers %></td>
         <td><%= link_to 'Show', booking %></td>
         <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
         <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
