@@ -1,15 +1,20 @@
 helper params:
 
 <%= params %>
-<%= simple_form_for(@booking, url: bookings_path, method: :post) do |f| %>
+<%= form_for(@booking, url: bookings_path, method: :post) do |f| %>
 
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
 
   <div class="form-inputs">
   <%= f.hidden_field :flight, value: @flight.id %>
-  <% @num_passengers.to_i.times do %>
-    <%= f.input :passengers, label: "Passenger Name" %>
+    <%= f.fields_for :passengers do |pass| %>
+      <%= pass.label :name %> 
+      <%= pass.text_field :name %><br /> 
+      <%= pass.label :email %> 
+      <%= pass.text_field :email %> 
+    
+
+
   <% end %>
 
     </div>
