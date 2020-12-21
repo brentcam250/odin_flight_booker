@@ -42,14 +42,14 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
-    # flight_id = params[:flight]
-    # @flight = Flight.find(flight_id)
-    # @booking = @flight.bookings.build
 
-    # @booking = Booking.new(booking_params)
 
-    @flight = Flight.find(booking_params[:flight])
-    @booking = Booking.new({:flight => @flight})
+    # @flight = Flight.find(booking_params[:flight])
+  
+    # @booking = Booking.new({:flight => @flight})
+    @booking = Booking.new(booking_params)
+    
+
 
 
     respond_to do |format|
