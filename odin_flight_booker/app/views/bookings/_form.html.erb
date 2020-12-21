@@ -6,7 +6,7 @@ helper params:
 
 
   <div class="form-inputs">
-  <%= f.hidden_field :flight, value: @flight %>
+  <%= f.hidden_field :flight, :value => @flight.id %>
     <%= f.fields_for :passengers do |pass| %>
       <%= pass.label :name %> 
       <%= pass.text_field :name %><br /> 

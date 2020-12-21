@@ -44,10 +44,12 @@ class BookingsController < ApplicationController
   def create
 
 
-    # @flight = Flight.find(booking_params[:flight])
-  
-    # @booking = Booking.new({:flight => @flight})
-    @booking = Booking.new(booking_params)
+    @flight = Flight.find(booking_params[:flight])
+
+    @booking = Booking.new({:flight => @flight, passengers_attributes: 
+    [{name: "brent", email: "email"}
+    ]})
+    # @booking = Booking.new(booking_params)
     
 
 
