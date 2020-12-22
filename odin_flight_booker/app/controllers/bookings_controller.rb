@@ -26,7 +26,8 @@ class BookingsController < ApplicationController
     #confusing about passing the id, when it actually expects the object
     @booking = Booking.new
 
-    @flight = Flight.find(booking_params[:flight])
+    # @flight = Flight.find(params[:booking][:flight_id])
+    @flight = Flight.find(booking_params[:flight_id])
 
     @num_passengers = booking_params[:num_passengers]
 
@@ -44,12 +45,12 @@ class BookingsController < ApplicationController
   def create
 
 
-    @flight = Flight.find(booking_params[:flight])
+    # @flight = Flight.find(booking_params[:flight])
 
-    @booking = Booking.new({:flight => @flight, passengers_attributes: 
-    [{name: "brent", email: "email"}
-    ]})
-    # @booking = Booking.new(booking_params)
+    # @booking = Booking.new({:flight => @flight, passengers_attributes: 
+    # [{name: "brent", email: "email"}
+    # ]})
+    @booking = Booking.new(booking_params)
     
 
 
@@ -98,7 +99,7 @@ class BookingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def booking_params
       # params.require(:booking).permit(:flight_id, passengers_data: [:id, :name, :email])
-      params.require(:booking).permit(:flight, :passengers, :num_passengers)
+      params.require(:booking).permit(:flight_id, :passengers, :num_passengers)
 
 
     end

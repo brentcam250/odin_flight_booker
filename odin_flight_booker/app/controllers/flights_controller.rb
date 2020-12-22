@@ -21,11 +21,7 @@ class FlightsController < ApplicationController
 
 
     @num_passengers = (params[:flight].nil? || params[:flight][:passengers].empty?) ? 1 : params[:flight][:passengers]
-    # @booking = Booking.new({:flight_id => @flight.id, :num_passengers => @num_passengers})
-    # @booking = Booking.new
-    # @booking.flight_id = @flight.id
-    # @booking.num_passengers = @num_passengers
-    # @booking = @flight.bookings.build
+
     @from_airport_id = params[:from_airport_id]
   end
 
