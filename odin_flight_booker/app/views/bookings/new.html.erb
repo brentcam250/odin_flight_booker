@@ -9,6 +9,7 @@ to:
 <b><%= @flight.to_airport.name %></b>
 departing at:
 <b><%= @flight.departure_time %></b>
+for:  <b><%= pluralize(params[:booking][:num_passengers], "passenger") %> </b>
 
 
 <br /> 

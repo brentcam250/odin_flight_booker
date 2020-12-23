@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 Booking id: <%=@booking.id %>
-flight id:<%= @booking.flight.id %>
-Passengers:<%= @booking.passengers.nil? ? "None" : @booking.passengers.each do |pass| %>
+flight id:<%= @booking.flight.id %><br /> 
+<b>Passengers:</b><br /><%= @booking.passengers.nil? ? "None" : @booking.passengers.each do |pass| %>
     <%= pass.name %><br />
 <% end %>
 <%= link_to 'Edit', edit_booking_path(@booking) %> |
