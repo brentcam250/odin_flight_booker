@@ -15,14 +15,15 @@
  */
 
 
- .navbar {
-  background-color: slategray;
-  padding: 20px;
-  font-weight: bold;
-  font-size: x-large;
-}
+ @import 'bulma';
+//  .navbar {
+//   background-color: slategray;
+//   padding: 20px;
+//   font-weight: bold;
+//   font-size: x-large;
+// }
 
-.search {
-  background-color: aqua;
-  width: 50%
-}
+// .search {
+//   background-color: aqua;
+//   width: 50%
+// }

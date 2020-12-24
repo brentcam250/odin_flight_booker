@@ -7,15 +7,23 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
   </head>
 
   <body>
   <% if flash[:alert] %>
     <p><%= alert %></p>
   <% end %>
-  <div class = 'navbar'>
-    <span><a href = 'https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-advanced-forms'>Odin Flight Booker!</a></span>
+  <div class = 'navbar is-dark is-spaced' role = 'navigation'>
+    <div class ='navbar-brand is-link'>
+      <div class = 'navbar-item'>
+        <h1><a href = 'https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-advanced-forms'>Odin Flight Booker!</a></h1>
+      </div>
+    </div>
   </div>
+  <div class = 'container'>
     <%= yield %>
+  </div>
   </body>
 </html>

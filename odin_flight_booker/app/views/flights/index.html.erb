@@ -22,11 +22,9 @@
         <td><%= button_to 'Book', 
         new_booking_path,
         method: :get,
-        params: {:booking => {:flight_id => flight.id, :num_passengers => @num_passengers}} %></td>
+        params: {:booking => {:flight_id => flight.id, :num_passengers => @num_passengers}}, :class => 'button' %></td>
         <td><b><%= flight.from_airport.name %></b>  to   <b><%= flight.to_airport.name %></b>  departing on: <%= flight.flight_date_formatted %> at: <b><%= flight.flight_time_formatted %></b></td>
-        <td><%= link_to 'Show', flight %></td>
-        <td><%= link_to 'Edit', edit_flight_path(flight) %></td>
-        <td><%= link_to 'Destroy', flight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
 
       </tr>
 
