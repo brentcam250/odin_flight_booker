@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+  <head class = ''>
     <title>OdinFlightBooker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,7 +12,8 @@
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
   </head>
 
-  <body>
+  <body class = ''>
+  
   <% if flash[:alert] %>
     <p><%= alert %></p>
   <% end %>
@@ -20,9 +22,12 @@
       <div class = 'navbar-item'>
         <h1><a href = 'https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-advanced-forms'>Odin Flight Booker!</a></h1>
       </div>
+      <div class = 'navbar-item'>
+        <h1><%= link_to 'App Home', 'flights#index'%></h1>
+      </div>
     </div>
   </div>
-  <div class = 'container'>
+  <div class = 'container m-4'>
     <%= yield %>
   </div>
   </body>

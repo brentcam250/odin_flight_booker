@@ -2,8 +2,8 @@
 
 
 
-<%= simple_form_for(@flight, url: flights_path, method: :get, local: true, :defaults =>{ :input_html => { :class => 'm-6' }}) do |f| %>
-    <table class= 'search '>
+<%= simple_form_for(@flight, url: flights_path, method: :get, local: true, :defaults =>{ :input_html => { :class => 'm-5' }}) do |f| %>
+    <table class= 'table '>
         <tr>
             <th><%= f.input :from_airport_id, collection: @airport_options, :selected => @flight.from_airport_id %></th>
             <th><%= f.input :to_airport_id, collection: @airport_options, :selected => @flight.to_airport_id %></th>
