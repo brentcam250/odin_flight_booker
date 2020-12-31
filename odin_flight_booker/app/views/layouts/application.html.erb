@@ -12,23 +12,25 @@
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
   </head>
 
-  <body class = ''>
+  <body>
   
-  <% if flash[:alert] %>
-    <p><%= alert %></p>
-  <% end %>
-  <div class = 'navbar is-dark is-spaced' role = 'navigation'>
-    <div class ='navbar-brand is-link'>
-      <div class = 'navbar-item'>
-        <h1><a href = 'https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-advanced-forms'>Odin Flight Booker!</a></h1>
-      </div>
-      <div class = 'navbar-item'>
-        <h1><%= link_to 'App Home', 'flights#index'%></h1>
+    <% if flash[:alert] %>
+      <p><%= alert %></p>
+    <% end %>
+    <div class = 'navbar is-dark is-spaced' role = 'navigation'>
+      <div class ='navbar-brand is-link'>
+        <div class = 'navbar-item'>
+          <h1 class = 'title is-1'><a href = 'https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-advanced-forms'>Odin Flight Booker!</a></h1>
+        </div>
+        <div class = 'navbar-item'>
+          <h1 class = 'title is-2'><%= link_to 'App Home', 'flights#index'%></h1>
+        </div>
       </div>
     </div>
-  </div>
-  <div class = 'container m-4'>
-    <%= yield %>
-  </div>
+    <section class = 'section is-small'>
+      <div class = 'container'>
+        <%= yield %>
+      </div>
+    </section>
   </body>
 </html>

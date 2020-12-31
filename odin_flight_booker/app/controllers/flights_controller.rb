@@ -7,7 +7,9 @@ class FlightsController < ApplicationController
     @selected_date = ((params[:flight].nil? || params[:flight][:flight_date_formatted].empty?) ? (Date.today) : (Date.parse(params[:flight][:flight_date_formatted])))
     
     #long query finally works for all the params
+    # @flights = (params[:flight].nil? ? Flight.all : Flight.where(departure_time: 
     @flights = (params[:flight].nil? ? Flight.all : Flight.where(departure_time: 
+
     (@selected_date.beginning_of_day..@selected_date.end_of_day), from_airport: params[:flight][:from_airport_id],
     to_airport: params[:flight][:to_airport_id]))
 
