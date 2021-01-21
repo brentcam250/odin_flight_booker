@@ -26,6 +26,9 @@ class PassengersController < ApplicationController
   def create
     @passenger = Passenger.new(passenger_params)
 
+    #tell the mailer to send a welcome email after save
+    PassengerMailer.with(passenger: @passenger).welcome_email.deliver_later
+
     respond_to do |format|
       if @passenger.save
         format.html { redirect_to @passenger, notice: 'Passenger was successfully created.' }
