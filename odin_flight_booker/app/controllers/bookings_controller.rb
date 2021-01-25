@@ -57,8 +57,10 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-
+        @passenger = @booking.passengers.first
         #trigger thank you email
+        PassengerMailer.with(passenger: @passenger).thanks4book_email.deliver_now!
+
 
         format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
