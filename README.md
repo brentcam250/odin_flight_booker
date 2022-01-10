@@ -2,6 +2,8 @@
   This app is used to search and book flights out of dummy data. Booking a flight will gather passenger information and create a booking in the database. Can also use the app to populate data like flights, airports etc.
   
 # Running Locally: 
+  Prerequsites: Ruby 2.7.0, rails 5.2.4
+  
   Clone this repo
   In the directory you cloned to run the following commands: 
   - bundle install #install required gems
